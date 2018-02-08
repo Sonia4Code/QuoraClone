@@ -1,2 +1,32 @@
-<%= @question.question %>
+<html>
+<head>
+	<title></title>
+</head>
+<body>		
+	<h2>View Question</h2>
+
+	<p>Question #: <%= @question.question %></p>
+	<p><%= @question.question %></p>
+
+<!-- EDIT FORM AND ACTION -->
+	<form id ="edit" method ="GET" action = '/questions/<%= @question.id %>/edit'>
+	<input type="submit" value="EDIT">
+	</form>
+	<br>
+
+<!-- DELETE BUTTON AND ACTION -->
+	<form action="/questions/<%= @question.id%>" method="post">
+  	<input type="hidden" name="_method" value="DELETE">
+  	<input type="submit" value="Delete Question?">
+	</form>
+	<br>
+
+
+
+</body>
+</html>
+
+
+
+
 

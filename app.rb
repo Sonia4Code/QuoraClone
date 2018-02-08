@@ -37,8 +37,17 @@ get '/' do
 
 end
 
- #GO TO NEW QUESTION PAGE
-get '/questions/new' do						
+#GET ALL QUESTIONS
+get '/questions' do
+  @questions = Question.all
+  p @questions 
+
+ erb :"questions/questions"
+
+end
+
+ #SHOWS FORM TO CREATE A Q
+get '/questions/new' do           
   @questions = Question.all
   p @questions 
 
@@ -46,7 +55,21 @@ get '/questions/new' do
 
 end
 
-#FORM THAT SUBMITS DATA TO THE DATABASE
+#FIND OUT ABOUT NAMING FOR CLARITY 
+
+ #GET A SPECIFIC QUESTION
+get "/questions/:id" do
+ 
+  @question = Question.find(params[:id])
+
+  erb :"questions/show"
+
+end 
+
+
+
+
+#STORES AND SUBMITS
 post '/questions' do
 	p params
 	q1 = Question.new(question: params[:question])
@@ -56,18 +79,43 @@ post '/questions' do
 
  end
 
-
- #PAGE THAT SHOWS SPECIFIC QUESTIONS BY ID
-get "/questions/:id" do
- 
+#SHOW FORM TO EDIT Q
+get '/questions/:id/edit' do
+  @id = params[:id]
   @question = Question.find(params[:id])
 
-  erb :"questions/show"
+  erb :"questions/edit"
+end
 
-end	
+
+# #STORES UPDATES
+patch '/questions/:id' do
+  @id = params[:id]
+  @question = Question.find(params[:id])
+  @question.question = params[:question]
+  @question.save 
+  # @question.update(params[:question])
+
+  redirect to("/questions/#{params[:id]}")
+
+  # erb :"home"
+
+end
 
 
-#goes to index page --> works
+#DELETE  --> works
+delete '/questions/:id' do
+  @id = params[:id]
+  @question = Question.delete(params[:id])
+
+  erb :"home"
+
+  # "Your question has been deleted"
+
+end
+
+
+# # goes to index page --> works
 # get '/questions/index' do
 #   @questions = Question.all
 #   p @questions 
@@ -75,6 +123,9 @@ end
 #  erb :"questions/index"
 
 # end
+
+
+
 
 
 

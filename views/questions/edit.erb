@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>Question Editing Page</title>
+</head>
+<body>		
+	<h2>Edit Question</h2>
+
+	<p>Question: <br>
+	<%= @question.question %></p>
+
+	<!-- <form id ="edit" method ="GET" action = '/questions/:id/edit'>
+		<input type = "text">
+	</form>
+	<br> -->
+	<!-- <form id ="delete" method ="DELETE" action = '/questions/<%= @question.id %>/edit'>
+	<input type="submit" value="EDIT">
+	</form>
+    -->
+<!-- UPDATE BUTTON AND ACTION -->
+	<form action= <%= "/questions/" + @question.id.to_s %> method="post">
+  	<input id="hidden" type="hidden" name="_method" value="patch">
+  	<input type = "text" name = "question">
+
+  	<input type="submit" name = "update" value="Submit">
+	</form>
+
+
+	
+</body>
+</html>
+
