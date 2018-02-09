@@ -1,14 +1,35 @@
 <html>
 <head>
-	<title>Index Page</title>
+	<title>View All</title>
 </head>
 <body>
+	<a href ="http://localhost:9393/">Home</a>
+	
 	<h2> Submitted Questions</h2>
 
-	<ul><% @questions.each do |q| %>
+	<div>
+      <table>
+        <th>Questions:</th>
+        <th></th>
+        <th><a href ="http://localhost:9393/questions">:All</a></th>
+        <th></th>
+        <th><a href ="http://localhost:9393/questions/new">:New</a></th>
+        <th></th>
+        <th><a href ="#">:Category</a></th>
+      </table>
+    </div>
+
+
+<!-- SUBMITTED QUESTIONS LIST -->
+
+	<Ul><% @questions.each do |q| %>
+	<div>
     <li><%= q.question %></li>
     <% end %>  
+	</div>
 	</ul>
 
 </body>
 </html>
+
+<!-- how to make the newest question appear on top after submit -->

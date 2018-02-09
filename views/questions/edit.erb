@@ -3,29 +3,49 @@
 	<title>Question Editing Page</title>
 </head>
 <body>		
+	<a href ="http://localhost:9393/">Home</a>
+
 	<h2>Edit Question</h2>
 
-	<p>Question: <br>
-	<%= @question.question %></p>
+	<!-- <p>Question: <br>
+	<%= @question.question %></p> -->
 
-	<!-- <form id ="edit" method ="GET" action = '/questions/:id/edit'>
-		<input type = "text">
-	</form>
-	<br> -->
-	<!-- <form id ="delete" method ="DELETE" action = '/questions/<%= @question.id %>/edit'>
-	<input type="submit" value="EDIT">
-	</form>
-    -->
-<!-- UPDATE BUTTON AND ACTION -->
+	<p><h3>Question <%= @question.id %></h3></p>
+
+	<p><h3><%= @question.question %></h3></p>
+
+
+
+	<!-- UPDATE BUTTON AND ACTION -->
+	<table>
 	<form action= <%= "/questions/" + @question.id.to_s %> method="post">
   	<input id="hidden" type="hidden" name="_method" value="patch">
-  	<input type = "text" name = "question">
-
-  	<input type="submit" name = "update" value="Submit">
+  	<input type = "text" name = "question">  <!-- INPUT BOX -->
+  	<input type="submit" name = "update" value="UPDATE"> <!-- SUBMIT BUTTON -->
 	</form>
 
+	<th></th>
+
+	<!-- DELETE BUTTON AND ACTION --> -->
+	<th>
+	<form action="/questions/<%= @question.id%>" method="post">
+	<input type="hidden" name="_method" value="DELETE">
+	<input type="submit" value="DELETE">
+	</form>
+	</th>
+	</table>
 
 	
 </body>
 </html>
 
+<!-- PREVIOUSLY WORKING CODE -->
+
+	<!-- UPDATE BUTTON AND ACTION -->
+	<!-- <form action= <%= "/questions/" + @question.id.to_s %> method="post">
+  	<input id="hidden" type="hidden" name="_method" value="patch">
+  	<input type = "text" name = "question">
+
+  	<input type="submit" name = "update" value="Submit">
+	</form>
+ -->

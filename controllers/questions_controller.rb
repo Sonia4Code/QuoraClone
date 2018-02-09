@@ -8,25 +8,8 @@ puts ENV['BUNDLE_GEMFILE']
 
 ######################################################################
 
-# basic
 
-require 'rubygems'
-
-require 'bundler/setup' if File.exist?(ENV['BUNDLE_GEMFILE'])
-
-require 'pathname'
-
-require 'pg'
-
-require 'active_record'
-
-require 'sinatra'
-
-APP_ROOT = Pathname.new(File.expand_path('../', __FILE__))
-
-require APP_ROOT.join('config', 'database')
-
-
+#QUESTIONS CONTROLLERS
 # GO TO HOMEPAGE
 get '/' do
   @questions = Question.all
@@ -66,16 +49,13 @@ get "/questions/:id" do
 
 end 
 
-
-
-
 #STORES AND SUBMITS
 post '/questions' do
 	p params
 	q1 = Question.new(question: params[:question])
 	q1.save 
 
-	redirect to("/questions")
+	# erb :"index"
 
  end
 
@@ -108,29 +88,8 @@ delete '/questions/:id' do
   @id = params[:id]
   @question = Question.delete(params[:id])
 
-  redirect to("/questions")
+  erb :"home"
 
   # "Your question has been deleted"
 
 end
-
-
-# # goes to index page --> works
-# get '/questions/index' do
-#   @questions = Question.all
-#   p @questions 
-
-#  erb :"questions/index"
-
-# end
-
-
-
-
-
-
-
-
- 
-
-
