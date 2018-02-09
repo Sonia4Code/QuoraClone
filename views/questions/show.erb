@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title></title>
+	<title>Show</title>
 </head>
 <body>		
 	<a href ="http://localhost:9393/">Home</a>
@@ -9,7 +9,7 @@
 
 	<p><h3>Question <%= @question.id %></h3></p>
 
-	<p><h3><%= @question.question %></h3></p>
+	<p><h3><%= @question.title %></h3></p>
 
 
 <!-- EDIT FORM AND ACTION -->
@@ -43,6 +43,10 @@
 		</th>
 
 	</table>
+
+	<form id ="edit" method ="GET" action = '/questions/<%= @question.id %>/reply'>
+		<input type="submit" name="REPLY" value = "REPLY">
+	</form>
 
 
 </body>

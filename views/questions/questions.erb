@@ -21,13 +21,13 @@
 
 
 <!-- SUBMITTED QUESTIONS LIST -->
+    <ul>
+	<li><% @questions.each do |q| %>	
+    <%= q.question %>
+    <% end %> 
+    <li
+    </ul> 
 
-	<Ul><% @questions.each do |q| %>
-	<div>
-    <li><%= q.question %></li>
-    <% end %>  
-	</div>
-	</ul>
 
 </body>
 </html>

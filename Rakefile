@@ -2,7 +2,7 @@ require 'rake'
 
 # Include environment settings
 
-require ::File.expand_path('../app', __FILE__)
+require ::File.expand_path('../config/init', __FILE__)
 
 # Require all ActiveSupport's class and extensions
 
@@ -70,6 +70,12 @@ namespace :db do
 
    end
 
+ end
+
+ desc "Drop the database at #{DB_NAME}" 
+ task :drop do
+  puts "Drop database #{DB_NAME}"
+  exec("dropdb #{DB_NAME}")
  end
 
 end

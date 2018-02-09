@@ -44,7 +44,7 @@ end
 #STORES AND SUBMITS
 post '/questions' do
   p params
-  q1 = Question.new(question: params[:question])
+  q1 = Question.new(question: params[:title])
   q1.save 
 
   redirect to("/questions")
@@ -64,13 +64,11 @@ end
 patch '/questions/:id' do
   @id = params[:id]
   @question = Question.find(params[:id])
-  @question.question = params[:question]
+  @question.question = params[:title]
   @question.save 
   # @question.update(params[:question])
 
   redirect to("/questions/#{params[:id]}")
-
-  # erb :"home"
 
 end
 
@@ -82,17 +80,15 @@ delete '/questions/:id' do
 
   redirect to("/questions")
 
-  # "Your question has been deleted"
-
 end
 
 
-# # goes to index page --> works
-# get '/questions/index' do
+#SHOWS FORM TO REPLY TO ANSWER
+# get 'questions/reply' do           
 #   @questions = Question.all
 #   p @questions 
 
-#  erb :"questions/index"
+#  erb :"questions/reply"
 
 # end
 

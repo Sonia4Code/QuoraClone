@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>New Question</title>
+</head>
+<body>
+
+<a href ="http://localhost:9393/">Home</a>
+
+<h1> Reply </h1>
+
+	<h2>Answer Question</h2>
+
+	<p><h3>Question <%= @question.id %></h3></p>
+
+	<p><h3><%= @question.question %></h3></p>
+
+
+	<form method = 'POST' action = '/questions'>
+		<p>Type new question: <br>
+		<input type="text" name="question"> 
+		
+		<br>
+		<input type="submit">
+	</form>
+
+
+</body>
+</html>
+
+
+
