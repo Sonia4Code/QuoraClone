@@ -1,15 +1,4 @@
-# Specify gemfile Location and general variables
-
-ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../Gemfile', __FILE__)
-
-puts ENV['BUNDLE_GEMFILE']
-
-# Perform requiring gem that we need
-
-######################################################################
-
-
-#QUESTIONS CONTROLLERS
+#QUESTIONS_CONTROLLER
 # GO TO HOMEPAGE
 get '/' do
   @questions = Question.all
@@ -49,13 +38,16 @@ get "/questions/:id" do
 
 end 
 
+
+
+
 #STORES AND SUBMITS
 post '/questions' do
-	p params
-	q1 = Question.new(question: params[:question])
-	q1.save 
+  p params
+  q1 = Question.new(question: params[:question])
+  q1.save 
 
-	# erb :"index"
+  redirect to("/questions")
 
  end
 
@@ -88,8 +80,29 @@ delete '/questions/:id' do
   @id = params[:id]
   @question = Question.delete(params[:id])
 
-  erb :"home"
+  redirect to("/questions")
 
   # "Your question has been deleted"
 
 end
+
+
+# # goes to index page --> works
+# get '/questions/index' do
+#   @questions = Question.all
+#   p @questions 
+
+#  erb :"questions/index"
+
+# end
+
+
+
+
+
+
+
+
+ 
+
+

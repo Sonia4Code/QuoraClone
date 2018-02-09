@@ -46,6 +46,7 @@ db = URI.parse(ENV['DATABASE_URL'] || "postgres://localhost/quora_clone_developm
 
 DB_NAME = db.path[1..-1]
 
+
 # Note:
 
 #   Sinatra::Application.environment is set to the value of ENV['RACK_ENV']
