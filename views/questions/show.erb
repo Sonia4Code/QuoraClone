@@ -9,7 +9,7 @@
 
 	<p><h3>Question <%= @question.id %></h3></p>
 
-	<p><h3><%= @question.title %></h3></p>
+	<p><h3><%= @question.question %></h3></p>
 
 
 <!-- EDIT FORM AND ACTION -->
@@ -47,6 +47,10 @@
 	<form id ="edit" method ="GET" action = '/questions/<%= @question.id %>/reply'>
 		<input type="submit" name="REPLY" value = "REPLY">
 	</form>
+
+	<!-- <form id ="edit" method ="GET" action = '/questions/<%= @question.id %>/reply'>
+		<input type="submit" name="REPLY" value = "REPLY">
+	</form> -->
 
 
 </body>

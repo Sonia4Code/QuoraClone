@@ -31,7 +31,7 @@ end
 
  #GET A SPECIFIC QUESTION
 get "/questions/:id" do
- 
+  @id = params[:id]
   @question = Question.find(params[:id])
 
   erb :"questions/show"
@@ -44,7 +44,7 @@ end
 #STORES AND SUBMITS
 post '/questions' do
   p params
-  q1 = Question.new(question: params[:title])
+  q1 = Question.new(question: params[:question])
   q1.save 
 
   redirect to("/questions")
@@ -64,7 +64,7 @@ end
 patch '/questions/:id' do
   @id = params[:id]
   @question = Question.find(params[:id])
-  @question.question = params[:title]
+  @question.question = params[:question]
   @question.save 
   # @question.update(params[:question])
 
@@ -83,22 +83,11 @@ delete '/questions/:id' do
 end
 
 
-#SHOWS FORM TO REPLY TO ANSWER
-# get 'questions/reply' do           
-#   @questions = Question.all
-#   p @questions 
+# SHOWS FORM TO REPLY TO ANSWER
+get '/questions/:id/reply' do
+  @id = params[:id]
+  @question = Question.find(params[:id])
 
-#  erb :"questions/reply"
+ erb :"questions/reply"
 
-# end
-
-
-
-
-
-
-
-
- 
-
-
+end
